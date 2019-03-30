@@ -13,3 +13,15 @@ terraform を初期化
 ```
 $ terraform init
 ```
+
+terraform plan で作成されるクラスタを確認
+
+```
+$ terraform plan -var-file="config.tfvars"
+```
+
+問題なければクラスタを作成
+
+```
+$ terraform apply -var-file="config.tfvars"
+```
