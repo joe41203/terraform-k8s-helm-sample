@@ -1,3 +1,5 @@
 /terraform/config.tfvars
 /terraform/k8s-gcp-account.json
 /terraform/.terraform/**
+/terraform/*.tfstate
+/terraform/*.tfstate.*
