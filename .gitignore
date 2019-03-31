@@ -3,3 +3,5 @@
 /terraform/.terraform/**
 /terraform/*.tfstate
 /terraform/*.tfstate.*
+
+/k8s/db-password.txt

@@ -26,3 +26,23 @@ $ terraform plan -var-file="config.tfvars"
 ```
 $ terraform apply -var-file="config.tfvars"
 ```
+
+# GCP 上にアプリケーションをデプロイ
+
+workspace を k8s に移動
+
+```
+$ cd k8s
+```
+
+db 用のパスワードを追記・暗号化
+
+```
+$ kubectl create secret generic db-password --from-file=./db-password.txt
+```
+
+secret が生成されているか確認
+
+```
+$ kubectl get secret
+```
