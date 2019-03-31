@@ -44,5 +44,5 @@ $ kubectl create secret generic db-password --from-file=./db-password.txt
 secret が生成されているか確認
 
 ```
-$ kubectl get secret
+$ kubectl get secrets
 ```
