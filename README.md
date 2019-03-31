@@ -28,6 +28,12 @@ $ terraform plan -var-file="config.tfvars"
 $ terraform apply -var-file="config.tfvars"
 ```
 
+クラスタを生成し終えたら kubectl で操作できるようにする
+
+```
+$ gcloud container clusters get-credentials k8s
+```
+
 # GCP 上にアプリケーションをデプロイ
 
 workspace を k8s に移動
