@@ -3,16 +3,49 @@ kind: Deployment
 metadata:
   name: web
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
-        app: web
+        app: k8s-rails-app
         tier: web
     spec:
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf
+        - name: web-assets
+        - name: web-sock
       containers:
+        - name: rails
+          image: docker.io/kinjoyuji/webapp:latest
+          imagePullPolicy: Always
+          command: ['bundle', 'exec', 'puma', '-C', 'config/puma.rb']
+          envFrom:
+            - configMapRef:
+                name: rails-config
+          volumeMounts:
+            - mountPath: /myapp/tmp/sockets
+              name: web-sock
+            - mountPath: /myapp/public
+              name: web-assets
         - name: nginx
-          image: nginx:latest
+          image: docker.io/kinjoyuji/nginx:latest
+          imagePullPolicy: Always
           ports:
-            - name: web-port
-              containerPort: 80
+            - containerPort: 80
+              name: nginx-port
+          lifecycle:
+            preStop:
+              exec:
+                # SIGTERM triggers a quick exit; gracefully terminate instead
+                command: ['/usr/sbin/nginx', '-s', 'quit']
+          volumeMounts:
+            - mountPath: /myapp/public
+              name: web-assets
+              readOnly: true
+            - mountPath: /myapp/tmp/sockets
+              name: web-sock
+            - mountPath: /etc/nginx/
+              name: nginx-conf
+              readOnly: true
