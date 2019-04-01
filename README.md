@@ -53,3 +53,11 @@ secret が生成されているか確認
 ```
 $ kubectl get secrets
 ```
+
+# 躓いたところ
+
+全てここに解決策が書かれている
+https://qiita.com/esplo/items/6a47f635556b085c975c
+
+1. Nginx と Puma の通信は sockets を使うことを知らなかった
+2. Pod で複数のコンテナを運用すると一部データが消えることを注意する。例えば myapp/public。rails が親の image で、nginx image で空上書きするため消えてしまう(sockets の通信や、assets precompile で詰まった。死んだ。Nginx と Rails で public を共有しない形にして一旦回避・・)

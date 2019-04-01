@@ -27,8 +27,8 @@ spec:
           volumeMounts:
             - mountPath: /myapp/tmp/sockets
               name: web-sock
-            - mountPath: /myapp/public
-              name: web-assets
+            # - mountPath: /myapp/public
+            #   name: web-assets
         - name: nginx
           image: docker.io/kinjoyuji/nginx:latest
           imagePullPolicy: Always
@@ -41,9 +41,9 @@ spec:
                 # SIGTERM triggers a quick exit; gracefully terminate instead
                 command: ['/usr/sbin/nginx', '-s', 'quit']
           volumeMounts:
-            - mountPath: /myapp/public
-              name: web-assets
-              readOnly: true
+            # - mountPath: /myapp/public
+            #   name: web-assets
+            #   readOnly: true
             - mountPath: /myapp/tmp/sockets
               name: web-sock
             - mountPath: /etc/nginx/

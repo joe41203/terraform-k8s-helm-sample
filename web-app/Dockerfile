@@ -18,3 +18,4 @@ ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 COPY . /myapp
 RUN yarn install && gem update bundler && bundle install --jobs=4
+RUN bundle exec rake assets:precompile RAILS_ENV=production

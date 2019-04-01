@@ -12,13 +12,10 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:5.6
+          image: mysql:5.7.17
           env:
             - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-password
-                  key: db-password.txt
+              value: 'passw0rd'
           ports:
             - containerPort: 3360
-              name: mysql
+              name: mysql-port
