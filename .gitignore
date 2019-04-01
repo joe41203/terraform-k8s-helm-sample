@@ -5,3 +5,7 @@
 /terraform/*.tfstate.*
 
 /k8s/db-password.txt
+
+/web-app/vendor/bundle/**/**
+/web-app/tmp/**
+/web-app/log/**
