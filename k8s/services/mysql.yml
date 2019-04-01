@@ -1,14 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: mysql
+  name: mysql-service
   labels:
-    app: k8s-hello-world
+    app: k8s-rails-app
     tier: mysql
 spec:
   ports:
     - port: 3306
   selector:
-    app: k8s-hello-world
+    app: k8s-rails-app
     tier: mysql
   clusterIP: None
