@@ -8,6 +8,6 @@ spec:
   selector:
     app: k8s-rails-app
   ports:
-    - port: 8080
+    - port: 7000
       targetPort: nginx-port
   type: LoadBalancer

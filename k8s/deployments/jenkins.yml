@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jenkins
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: k8s-rails-app
+        tier: jenkins
+    spec:
+      volumes:
+        - name: jenkins-volume
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins
+          volumeMounts:
+            - mountPath: /var/jenkins_home
+              name: jenkins-volume
+          ports:
+            - containerPort: 8080
+              name: jenkins-port-1
+            - containerPort: 50000
+              name: jenkins-port-2

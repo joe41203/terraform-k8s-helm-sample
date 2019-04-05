@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: jenkins-service
+  labels:
+    app: k8s-rails-app
+spec:
+  selector:
+    app: k8s-rails-app
+  ports:
+    - port: 8080
+      name: jenkins-port-1
+      targetPort: jenkins-port-1
+    - port: 50000
+      name: jenkins-port-2
+      targetPort: jenkins-port-2
+  type: LoadBalancer
