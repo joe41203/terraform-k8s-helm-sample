@@ -20,7 +20,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "k8s-node-pool"
   location   = "asia-northeast1-a"
   cluster    = "${google_container_cluster.primary.name}"
-  node_count = 1
+  node_count = 2
 
   node_config {
     preemptible  = true
