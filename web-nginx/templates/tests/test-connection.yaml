@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "web-nginx.fullname" . }}-test-connection"
+  namespace: {{ .Release.Name }}
+  labels:
+    app.kubernetes.io/name: {{ include "web-nginx.name" . }}
+    helm.sh/chart: {{ include "web-nginx.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "web-nginx.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
