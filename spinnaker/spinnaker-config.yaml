@@ -1,0 +1,19 @@
+# s3的な
+storageBucket: $BUCKET
+gcs:
+  enabled: true
+  project: $PROJECT
+  jsonKey: '$SA_JSON'
+
+
+# Disable minio as the default
+minio:
+  enabled: false
+
+# Configure your Docker registries here
+accounts:
+- name: gcr
+  address: https://gcr.io
+  username: _json_key
+  password: '$SA_JSON'
+  email: 1234@5678.com
