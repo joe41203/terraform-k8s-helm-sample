@@ -1,0 +1,4 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/terraform-k8s-rails-sample', '.']
+images: ['gcr.io/k8s-practice-236106/terraform-k8s-rails-sample:$TAG_NAME']
