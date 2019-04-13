@@ -1,3 +1,4 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/terraform-k8s-rails-sample', 'web-app/.']
+  args: ['build', '-t', 'gcr.io/terraform-k8s-rails-sample:$TAG_NAME', 'web-app/.']
+images: ['gcr.io/terraform-k8s-rails-sample:$TAG_NAME']
